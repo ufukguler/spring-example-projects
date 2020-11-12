@@ -17,6 +17,7 @@
         <module>rabbitMQ</module>
         <module>spring-redis-cache</module>
         <module>spring-postgresql-datajpa</module>
+        <module>spring-boot-graphql</module>
     </modules>
 
     <properties>
