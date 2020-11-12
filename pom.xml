@@ -16,6 +16,7 @@
         <module>spring-boot-jwt</module>
         <module>rabbitMQ</module>
         <module>spring-redis-cache</module>
+        <module>spring-postgresql-datajpa</module>
     </modules>
 
     <properties>
