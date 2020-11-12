@@ -25,21 +25,31 @@ public class NotificationProducer {
     private String exchangeName;
 
     @PostConstruct
-    public void init() {
+    public void init(){
 
-        Notification notification = new Notification();
-        notification.setNotificationId(UUID.randomUUID().toString());
-        notification.setCreatedAt(new Date());
-        notification.setMessage("hosgeldinnn");
-        notification.setSeen(false);
-        sendToQueue(notification);
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Notification notification = new Notification();
+                notification.setNotificationId(UUID.randomUUID().toString());
+                notification.setCreatedAt(new Date());
+                notification.setMessage("hosgeldinnn");
+                notification.setSeen(false);
+                sendToQueue(notification);
+            }
+        }).start();
+
     }
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     public void sendToQueue(Notification notification) {
-        System.out.println("notification id: " + notification.getNotificationId());
+        System.out.println("\n### notification ID: " + notification.getNotificationId());
         rabbitTemplate.convertAndSend(exchangeName, routingName, notification);
     }
 }
