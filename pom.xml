@@ -15,6 +15,7 @@
         <module>spring-elasticsearch</module>
         <module>spring-boot-jwt</module>
         <module>rabbitMQ</module>
+        <module>spring-redis-cache</module>
     </modules>
 
     <properties>
